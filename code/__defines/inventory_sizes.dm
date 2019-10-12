@@ -18,3 +18,6 @@
 #define DEFAULT_BACKPACK_STORAGE BASE_STORAGE_CAPACITY(5)
 #define DEFAULT_LARGEBOX_STORAGE BASE_STORAGE_CAPACITY(4)
 #define DEFAULT_BOX_STORAGE      BASE_STORAGE_CAPACITY(3)
+
+//this all needs a refactor to tg storage but for now..
+#define MAX_STORAGE_REACH 2		//maximum you can reach down to grab things from storage.

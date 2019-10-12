@@ -119,7 +119,7 @@
  * Circular Saw
  */
 /obj/item/weapon/circular_saw
-	name = "circular saw"
+	name = "bone saw"
 	desc = "For heavy duty cutting."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "saw3"
@@ -137,13 +137,14 @@
 	edge = 1
 
 //misc, formerly from code/defines/weapons.dm
+
 /obj/item/weapon/bonegel
 	name = "bone gel"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "bone-gel"
 	force = 0
-	w_class = ITEM_SIZE_SMALL
 	throwforce = 1.0
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/weapon/FixOVein
 	name = "FixOVein"
@@ -154,6 +155,11 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 3)
 	w_class = ITEM_SIZE_SMALL
 	var/usage_amount = 10
+
+/obj/item/weapon/FixOVein/suture
+	name = "suture"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "suture"
 
 /obj/item/weapon/bonesetter
 	name = "bone setter"

@@ -967,16 +967,6 @@ var/global/list/common_tools = list(
 
 //check if mob is lying down on something we can operate him on.
 /proc/can_operate(mob/living/carbon/M, mob/living/carbon/user)
-	var/turf/T = get_turf(M)
-	if(locate(/obj/machinery/optable, T))
-		. = TRUE
-	if(locate(/obj/structure/bed, T))
-		. = TRUE
-	if(locate(/obj/structure/table, T))
-		. = TRUE
-	if(locate(/obj/effect/rune/, T))
-		. = TRUE
-
 	if(M == user)
 		var/hitzone = check_zone(user.zone_sel.selecting)
 		var/list/badzones = list(BP_HEAD)
@@ -988,6 +978,7 @@ var/global/list/common_tools = list(
 			badzones += BP_R_HAND
 		if(hitzone in badzones)
 			return FALSE
+	return TRUE
 
 /proc/reverse_direction(var/dir)
 	switch(dir)

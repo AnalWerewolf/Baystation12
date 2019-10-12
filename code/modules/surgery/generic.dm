@@ -26,30 +26,30 @@
 		/obj/item/weapon/scalpel/laser3 = 95,
 		/obj/item/weapon/scalpel/laser2 = 85,
 		/obj/item/weapon/scalpel/laser1 = 75,
-		/obj/item/weapon/melee/energy/sword = 5
+		/obj/item/weapon/melee/energy/sword = 60
 	)
 	min_duration = 90
 	max_duration = 110
 
 /decl/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts the bloodless incision on [target]'s [affected.name] with \the [tool].", \
-	"You start the bloodless incision on [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("You feel a horrible, searing pain in your [affected.name]!",50, affecting = affected)
+	user.visible_message("[user] starts preparing to make a bloodless incision on [target]'s [affected.name] with \the [tool].", \
+	"You start preparing to make a bloodless incision on [target]'s [affected.name] with \the [tool].")
 	..()
 
 /decl/surgery_step/generic/cut_with_laser/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has made a bloodless incision on [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have made a bloodless incision on [target]'s [affected.name] with \the [tool].</span>",)
+	target.custom_pain("You feel a horrible, searing pain in your [affected.name]!",50, affecting = affected)
 	affected.createwound(CUT, affected.min_broken_damage/2, 1)
 	affected.clamp()
 	spread_germs_to_organ(affected, user)
 
 /decl/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</span>")
+	user.visible_message("<span class='warning'>[user] slips up as the blade sputters, and decides not to make an incision on [target]'s [affected.name] with \the [tool]!</span>", \
+	"<span class='warning'>You slip up as the blade sputters, and decide not to make an incision on [target]'s [affected.name] with \the [tool]!</span>")
 	affected.take_external_damage(15, 5, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
 
 //////////////////////////////////////////////////////////////////
@@ -66,24 +66,23 @@
 
 /decl/surgery_step/generic/managed/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts to construct a prepared incision on and within [target]'s [affected.name] with \the [tool].", \
-	"You start to construct a prepared incision on and within [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("You feel a horrible, searing pain in your [affected.name] as it is pushed apart!",50, affecting = affected)
+	user.visible_message("[user] starts preparing to make a prepared incision on and within [target]'s [affected.name] with \the [tool].", \
+	"You start preparing to construct a prepared incision on and within [target]'s [affected.name] with \the [tool].")
 	..()
 
 /decl/surgery_step/generic/managed/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] has constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</span>",)
+	target.custom_pain("You feel a horrible, searing pain in your [affected.name] as it is pushed apart!",50, affecting = affected)
 	affected.createwound(CUT, affected.min_broken_damage/2, 1) // incision
 	affected.clamp() // clamp
 	affected.open_incision() // retract
 
 /decl/surgery_step/generic/managed/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</span>")
-	affected.take_external_damage(20, 15, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
+	user.visible_message("<span class='warning'>[user] stops the tool just short of [target]'s [affected.name] as the operation is interrupted.</span>", \
+	"<span class='warning'>The system jolts in your hand and you cancel the operation on [target]'s [affected.name] with \the [tool]!</span>")
 
 //////////////////////////////////////////////////////////////////
 //	 scalpel surgery step
@@ -97,7 +96,7 @@
 		/obj/item/weapon/material/shard = 50
 	)
 	min_duration = 90
-	max_duration = 110
+	max_duration = 120
 	var/fail_string = "slicing open"
 	var/access_string = "an incision"
 
@@ -112,9 +111,8 @@
 
 /decl/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] starts [access_string] on [target]'s [affected.name] with \the [tool].", \
-	"You start [access_string] on [target]'s [affected.name] with \the [tool].")
-	target.custom_pain("You feel a horrible pain as if from a sharp knife in your [affected.name]!",40, affecting = affected)
+	user.visible_message("[user] starts preparing to make [access_string] on [target]'s [affected.name] with \the [tool].", \
+	"You start preparing to make [access_string] on [target]'s [affected.name] with \the [tool].")
 	..()
 
 /decl/surgery_step/generic/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -122,13 +120,13 @@
 	user.visible_message("<span class='notice'>[user] has made [access_string] on [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You have made [access_string] on [target]'s [affected.name] with \the [tool].</span>",)
 	affected.createwound(CUT, affected.min_broken_damage/2, 1)
+	target.custom_pain("You feel a horrible pain as if from a sharp knife in your [affected.name]!",40, affecting = affected)
 	playsound(target.loc, 'sound/weapons/bladeslice.ogg', 15, 1)
 
 /decl/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s hand slips, [fail_string] \the [target]'s [affected.name] in the wrong place with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, [fail_string] \the [target]'s [affected.name] in the wrong place with \the [tool]!</span>")
-	affected.take_external_damage(10, 0, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
+	user.visible_message("<span class='warning'>[user] slips up and decides not to create [access_string] on \the [target]'s [affected.name].</span>", \
+	"<span class='warning'>You slip up and decide not to create [access_string] on \the [target]'s [affected.name].</span>")
 
 /decl/surgery_step/generic/cut_open/success_chance(mob/living/user, mob/living/carbon/human/target, obj/item/tool)
 	. = ..()
@@ -316,20 +314,18 @@
 
 /decl/surgery_step/generic/amputate/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("[user] is beginning to amputate [target]'s [affected.name] with \the [tool]." , \
-	"<FONT size=3>You are beginning to cut through [target]'s [affected.amputation_point] with \the [tool].</FONT>")
-	target.custom_pain("Your [affected.amputation_point] is being ripped apart!",100,affecting = affected)
+	user.visible_message("[user] is making preparations to amputate [target]'s [affected.name] with \the [tool]." , \
+	"<FONT size=3>You are preparing to cut through [target]'s [affected.amputation_point] with \the [tool].</FONT>")
 	..()
 
 /decl/surgery_step/generic/amputate/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] amputates [target]'s [affected.name] at the [affected.amputation_point] with \the [tool].</span>", \
 	"<span class='notice'>You amputate [target]'s [affected.name] with \the [tool].</span>")
+	target.custom_pain("Your [affected.amputation_point] is being ripped apart!",100,affecting = affected)
 	affected.droplimb(1,DROPLIMB_EDGE)
 
 /decl/surgery_step/generic/amputate/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<span class='warning'>[user]'s hand slips, sawing through the bone in [target]'s [affected.name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, sawwing through the bone in [target]'s [affected.name] with \the [tool]!</span>")
-	affected.take_external_damage(30, 0, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
-	affected.fracture()
+	user.visible_message("<span class='warning'>[user] slips up and decides not to amputate [target]'s [affected.name] with \the [tool]!</span>", \
+	"<span class='warning'>You slip up and decide not to amputate [target]'s [affected.name] with \the [tool]!</span>")

@@ -811,6 +811,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	else
 		switch(droptype)
 			if(DROPLIMB_EDGE)
+				var/severed_sound = pick('sound/effects/gore/chop2.ogg', 'sound/effects/gore/chop3.ogg', 'sound/effects/gore/chop4.ogg')
 				if(!clean)
 					var/gore_sound = "[BP_IS_ROBOTIC(src) ? "tortured metal" : "ripping tendons and flesh"]"
 					return list(
@@ -818,6 +819,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 						"Your [src.name] goes flying off!",
 						"You hear a terrible sound of [gore_sound]."
 						)
+					playsound(owner, severed_sound, 100, 0)
+				else
+					playsound(owner, 'sound/effects/gore/severed.ogg', 100, 0)
+				if(owner.can_feel_pain() && prob(50))
+					owner.agony_scream()
 			if(DROPLIMB_BURN)
 				var/gore = "[BP_IS_ROBOTIC(src) ? "": " of burning flesh"]"
 				return list(
@@ -825,6 +831,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 					"Your [src.name] flashes away into ashes!",
 					"You hear a crackling sound[gore]."
 					)
+				if(owner.can_feel_pain() && prob(50))
+					owner.agony_scream()
 			if(DROPLIMB_BLUNT)
 				var/gore = "[BP_IS_ROBOTIC(src) ? "": " in shower of gore"]"
 				var/gore_sound = "[BP_IS_ROBOTIC(src) ? "rending sound of tortured metal" : "sickening splatter of gore"]"
@@ -833,6 +841,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 					"Your [src.name] explodes[gore]!",
 					"You hear the [gore_sound]."
 					)
+				if(owner.can_feel_pain() && prob(50))
+					owner.agony_scream()
 
 //Handles dismemberment
 /obj/item/organ/external/proc/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent)
@@ -1038,11 +1048,12 @@ obj/item/organ/external/proc/remove_clamps()
 			"<span class='danger'>You hear a sickening crack.</span>")
 		jostle_bone()
 		if(can_feel_pain())
-			owner.emote("scream")
+			if(prob(50))
+				owner.agony_scream()
+		playsound(loc, "trauma", 50, 1, -1)
 
-	playsound(src.loc, "fracture", 100, 1, -2)
 	status |= ORGAN_BROKEN
-	broken_description = pick("broken","fracture","hairline fracture")
+	broken_description = "fracture"
 
 	// Fractures have a chance of getting you out of restraints
 	if (prob(25))

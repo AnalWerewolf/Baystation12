@@ -165,6 +165,8 @@ What is the naming convention for planes or layers?
 
 #define OBSERVER_PLANE             1
 
+#define EFFECTS_BELOW_LIGHTING_PLANE   0.5
+
 #define LIGHTING_PLANE             2 // For Lighting. - The highest plane (ignoring all other even higher planes)
 	#define LIGHTBULB_LAYER        0
 	#define LIGHTING_LAYER         1

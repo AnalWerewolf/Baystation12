@@ -128,13 +128,13 @@ var/list/slot_equipment_priority = list( \
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
-	if(lying || !istype(W))
+	if(/*lying || */!istype(W))
 		return 0
 	return 1
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(var/obj/item/W)
-	if(lying || !istype(W))
+	if(/*lying || */!istype(W))
 		return 0
 	return 1
 
@@ -155,15 +155,29 @@ var/list/slot_equipment_priority = list( \
 	drop_from_inventory(W)
 	return 0
 
+/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null, drop_flag = null)
+	if(W)
+		if(!target)
+			target = loc
+		remove_from_mob(W)
+		if(!(W && W.loc))
+			return 1 // self destroying objects (tk, grabs)
+		if(W.loc != target)
+			W.do_putdown_animation(target, src)
+			W.forceMove(target, drop_flag)
+		update_icons()
+		return 1
+	return 0
+.
 // Removes an item from inventory and places it in the target atom.
 // If canremove or other conditions need to be checked then use unEquip instead.
-/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
+/*/mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
 	if(W)
 		remove_from_mob(W, target)
 		if(!(W && W.loc)) return 1 // self destroying objects (tk, grabs)
 		update_icons()
 		return 1
-	return 0
+	return 0*/
 
 //Drops the item in our left hand
 /mob/proc/drop_l_hand(var/atom/Target)

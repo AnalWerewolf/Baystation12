@@ -455,11 +455,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	return
 
 /datum/species/proc/handle_sleeping(var/mob/living/carbon/human/H)
-	if(prob(2) && !H.failed_last_breath && !H.isSynthetic())
-		if(!H.paralysis)
+	if(prob(2) && !H.failed_last_breath)
+		if(!H.paralysis && !H.isSynthetic())
 			H.emote("snore")
 		else
-			H.emote("groan")
+			H.agony_moan()
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
 /datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)

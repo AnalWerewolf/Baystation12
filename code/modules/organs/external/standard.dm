@@ -95,7 +95,7 @@
 	amputation_point = "left hip"
 	tendon_name = "cruciate ligament"
 	artery_name = "femoral artery"
-	arterial_bleed_severity = 0.75
+	arterial_bleed_severity = 1.1
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_HAS_TENDON | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/leg/right
@@ -120,7 +120,8 @@
 	joint = "left ankle"
 	amputation_point = "left ankle"
 	tendon_name = "Achilles tendon"
-	arterial_bleed_severity = 0.5
+	artery_name = "dorsalis pedis artery"
+	arterial_bleed_severity = 0.8
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_HAS_TENDON | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/foot/right

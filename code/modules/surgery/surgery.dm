@@ -150,13 +150,11 @@ GLOBAL_LIST_INIT(surgery_tool_exception_cache, new)
 			. -= 30
 		var/turf/T = get_turf(target)
 		if(locate(/obj/machinery/optable, T))
-			. -= 0
+			. += 20
 		else if(locate(/obj/structure/bed, T))
-			. -= 5
+			. += 10
 		else if(locate(/obj/structure/table, T))
-			. -= 10
-		else if(locate(/obj/effect/rune/, T))
-			. -= 10
+			. += 5
 	. = max(., 0)
 
 /proc/spread_germs_to_organ(var/obj/item/organ/external/E, var/mob/living/carbon/human/user)

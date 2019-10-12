@@ -76,7 +76,7 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
-	var/selector_sound = 'sound/weapons/guns/selector.ogg'
+	var/selector_sound = 'sound/weapons/guns/interaction/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered

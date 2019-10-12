@@ -159,7 +159,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 
 	if(encased && !(status & ORGAN_BROKEN)) //ribs protect
 		organ_hit_chance *= 0.6
-	
+
 	organ_hit_chance = min(organ_hit_chance, 100)
 	if(prob(organ_hit_chance))
 		var/obj/item/organ/internal/victim = pickweight(victims)
@@ -272,7 +272,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			return
 	pain = max(0,min(max_damage,pain+amount))
 	if(owner && ((amount > 15 && prob(20)) || (amount > 30 && prob(60))))
-		owner.emote("scream")
+		owner.agony_scream()
 	return pain-last_pain
 
 /obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
@@ -309,6 +309,8 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		var/obj/item/organ/internal/heart/O = species.has_organ[BP_HEART]
 		if(!BP_IS_ROBOTIC(src) && !(status & ORGAN_ARTERY_CUT) && !initial(O.open))
 			status |= ORGAN_ARTERY_CUT
+			if(artery_name == "cartoid artery")
+				playsound(owner.loc, 'sound/voice/throat.ogg', 50, 1, -1)
 			return TRUE
 	return FALSE
 

@@ -304,9 +304,9 @@
 
 	if(BP_IS_ROBOTIC(src))
 		if(is_bruised())
-			return "malfunctioning fans"
+			return "clicking with air leaking"
 		else
-			return "air flowing"
+			return "smooth rushing air"
 
 	. = list()
 	if(is_bruised())
