@@ -69,26 +69,13 @@
 
 	if(user.restrained())
 		return 0
-	if (user.pulling)
-		if(user.pulling.anchored || !isturf(user.pulling.loc))
-			return 0
-		if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-			return 0
+	if(isnull(user.pulling) || user.pulling.anchored || !isturf(user.pulling.loc))
+		return 0
+	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
+		return 0
+	if(user.pulling)
 		do_pull_click(user, src)
-
-	.=handle_hand_interception(user)
-	if (!.)
-		return 1
-
-/turf/proc/handle_hand_interception(var/mob/user)
-	var/datum/extension/turf_hand/THE
-	for (var/A in src)
-		var/datum/extension/turf_hand/TH = get_extension(A, /datum/extension/turf_hand)
-		if (istype(TH) && TH.priority > THE?.priority) //Only overwrite if the new one is higher. For matching values, its first come first served
-			THE = TH
-
-	if (THE)
-		return THE.OnHandInterception(user)
+	return 1
 
 /turf/attack_robot(var/mob/user)
 	if(Adjacent(user))
@@ -100,6 +87,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(S.use_to_pickup && S.collection_mode)
 			S.gather_all(src, user)
 	return ..()
+
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 

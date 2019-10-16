@@ -315,10 +315,7 @@
 	icon_state = "tank"
 	flags_inv = BLOCKHEADHAIR
 	color = "#5f5f5f"
-	armor = list(
-		melee = ARMOR_MELEE_KNIVES,
-		bomb = ARMOR_BOMB_PADDED
-		)
+	armor = list(melee = 20)
 
 /obj/item/clothing/head/tank/olive
 	color = "#727c58"

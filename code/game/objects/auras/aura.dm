@@ -9,7 +9,7 @@ They should also be used for when you want to effect the ENTIRE mob, like having
 /obj/aura/New(var/mob/living/target)
 	..()
 	if(target)
-		added_to(target)
+		user = target
 		user.add_aura(src)
 
 /obj/aura/Destroy()
