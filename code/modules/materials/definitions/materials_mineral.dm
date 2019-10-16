@@ -222,7 +222,7 @@
 	table_icon_base = "stone"
 	icon_colour = "#e37108"
 	shard_type = SHARD_SHARD
-	hardness = MATERIAL_RIGID
+	hardness = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_PHORON = 2)
 	door_icon_base = "stone"
 	sheet_singular_name = "crystal"

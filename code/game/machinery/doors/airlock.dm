@@ -695,41 +695,66 @@ About the new airlock wires panel:
 				stripe_filling_overlay.Blend(stripe_color, ICON_MULTIPLY)
 				airlock_icon_cache["[ikey2]"] = stripe_filling_overlay
 
-	if(arePowerSystemsOn())
-		switch(state)
-			if(AIRLOCK_CLOSED)
-				if(lights && locked)
+	switch(state)
+		if(AIRLOCK_CLOSED)
+			if(p_open)
+				panel_overlay = panel_file
+			if(welded)
+				weld_overlay = welded_file
+			if(stat & BROKEN)
+				damage_overlay = sparks_broken_file
+			else if(health < maxhealth * 3/4)
+				damage_overlay = sparks_damaged_file
+			if(lights && src.arePowerSystemsOn())
+				if(locked)
 					lights_overlay = bolts_file
 					set_light(0.25, 0.1, 1, 2, COLOR_RED_LIGHT)
 
-			if(AIRLOCK_DENY)
-				if(lights)
-					lights_overlay = deny_file
-					set_light(0.25, 0.1, 1, 2, COLOR_RED_LIGHT)
+		if(AIRLOCK_DENY)
+			if(!src.arePowerSystemsOn())
+				return
+			if(p_open)
+				panel_overlay = panel_file
+			if(stat & BROKEN)
+				damage_overlay = sparks_broken_file
+			else if(health < maxhealth * 3/4)
+				damage_overlay = sparks_damaged_file
+			if(welded)
+				weld_overlay = welded_file
+			if(lights && src.arePowerSystemsOn())
+				lights_overlay = deny_file
+				set_light(0.25, 0.1, 1, 2, COLOR_RED_LIGHT)
 
-			if(AIRLOCK_EMAG)
-				sparks_overlay = emag_file
+		if(AIRLOCK_EMAG)
+			sparks_overlay = emag_file
+			if(p_open)
+				panel_overlay = panel_file
+			if(stat & BROKEN)
+				damage_overlay = sparks_broken_file
+			else if(health < maxhealth * 3/4)
+				damage_overlay = sparks_damaged_file
+			if(welded)
+				weld_overlay = welded_file
 
-			if(AIRLOCK_CLOSING)
-				if(lights)
-					lights_overlay = lights_file
-					set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+		if(AIRLOCK_CLOSING)
+			if(lights && src.arePowerSystemsOn())
+				lights_overlay = lights_file
+				set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+			if(p_open)
+				panel_overlay = panel_file
 
-			if(AIRLOCK_OPENING)
-				if(lights)
-					lights_overlay = lights_file
-					set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+		if(AIRLOCK_OPEN)
+			if(stat & BROKEN)
+				damage_overlay = sparks_broken_file
+			else if(health < maxhealth * 3/4)
+				damage_overlay = sparks_damaged_file
 
-		if(stat & BROKEN)
-			damage_overlay = sparks_broken_file
-		else if(health < maxhealth * 3/4)
-			damage_overlay = sparks_damaged_file
-
-	if(welded)
-		weld_overlay = welded_file
-
-	if(p_open)
-		panel_overlay = panel_file
+		if(AIRLOCK_OPENING)
+			if(lights && src.arePowerSystemsOn())
+				lights_overlay = lights_file
+				set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+			if(p_open)
+				panel_overlay = panel_file
 
 	if(brace)
 		brace.update_icon()
@@ -762,15 +787,15 @@ About the new airlock wires panel:
 			flick("closing", src)
 			update_icon(AIRLOCK_CLOSED)
 		if("deny")
-			set_airlock_overlays(AIRLOCK_DENY)
-			if(density && arePowerSystemsOn())
+			if(density && src.arePowerSystemsOn())
+				set_airlock_overlays(AIRLOCK_DENY)
 				flick("deny", src)
 				if(secured_wires)
-					playsound(loc, open_failure_access_denied, 50, 0)
-			update_icon(AIRLOCK_CLOSED)
+					playsound(src.loc, open_failure_access_denied, 50, 0)
+				update_icon(AIRLOCK_CLOSED)
 		if("emag")
-			set_airlock_overlays(AIRLOCK_EMAG)
-			if(density && arePowerSystemsOn())
+			if(density && src.arePowerSystemsOn())
+				set_airlock_overlays(AIRLOCK_EMAG)
 				flick("deny", src)
 		else
 			update_icon()
@@ -1413,15 +1438,15 @@ About the new airlock wires panel:
 		..(amount)
 	update_icon()
 
-/obj/machinery/door/airlock/examine(mob/user)
+/obj/machinery/door/airlock/examine()
 	. = ..()
 	if (lock_cut_state == BOLTS_EXPOSED)
-		to_chat(user, "The bolt cover has been cut open.")
+		to_chat(usr, "The bolt cover has been cut open.")
 	if (lock_cut_state == BOLTS_CUT)
-		to_chat(user, "The door bolts have been cut.")
+		to_chat(usr, "The door bolts have been cut.")
 	if(brace)
-		to_chat(user, "\The [brace] is installed on \the [src], preventing it from opening.")
-		to_chat(user, brace.examine_health())
+		to_chat(usr, "\The [brace] is installed on \the [src], preventing it from opening.")
+		to_chat(usr, brace.examine_health())
 
 /obj/machinery/door/airlock/autoname
 

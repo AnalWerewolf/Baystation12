@@ -6,7 +6,7 @@
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = COLOR_WHITE
-	hardness = MATERIAL_SOFT
+	hardness = 10
 	weight = 5
 	melting_point = T0C+371 //assuming heat resistant plastic
 	stack_origin_tech = list(TECH_MATERIAL = 3)
@@ -34,7 +34,7 @@
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#aaaaaa"
-	hardness = MATERIAL_SOFT
+	hardness = 1
 	brute_armor = 1
 	weight = 1
 	ignition_point = T0C+232 //"the temperature at which book-paper catches fire, and burns." close enough
@@ -142,27 +142,17 @@
 	hidden_from_codex = TRUE
 	construction_difficulty = MATERIAL_NORMAL_DIY
 	value = 1
-	integrity = 50
-	hardness = MATERIAL_SOFT
-	weight = 5
-	explosion_resistance = 1
 	var/tans_to = MATERIAL_LEATHER_GENERIC
 
 /material/skin/lizard
 	name = MATERIAL_SKIN_LIZARD
 	icon_colour = "#626952"
 	tans_to = MATERIAL_LEATHER_LIZARD
-	hardness = MATERIAL_FLEXIBLE
-	weight = 10
 
 /material/skin/insect
 	name = MATERIAL_SKIN_CHITIN
 	icon_colour = "#7a726d"
 	tans_to = MATERIAL_LEATHER_CHITIN
-	integrity = 75
-	hardness = MATERIAL_RIGID
-	weight = 15
-	brute_armor = 2
 
 /material/skin/fur
 	name = MATERIAL_SKIN_FUR
@@ -247,14 +237,14 @@
 	hidden_from_codex = TRUE
 	construction_difficulty = MATERIAL_NORMAL_DIY
 	hitsound = 'sound/weapons/smash.ogg'
-	integrity = 75
-	hardness = MATERIAL_RIGID
+	hardness = 45
 	weight = 18
+	construction_difficulty = 1
 	value = 1
 
 /material/bone/fish
 	name = MATERIAL_BONE_FISH
-	hardness = MATERIAL_FLEXIBLE
+	hardness = 20
 	weight = 13
 
 /material/bone/cartilage
@@ -274,22 +264,12 @@
 	hidden_from_codex = TRUE
 	construction_difficulty = MATERIAL_NORMAL_DIY
 	value = 3
-	integrity = 50
-	hardness = MATERIAL_FLEXIBLE
-	weight = 10
 
 /material/leather/lizard
 	name = MATERIAL_LEATHER_LIZARD
-	integrity = 75
-	hardness = MATERIAL_RIGID
-	weight = 15
 
 /material/leather/fur
 	name = MATERIAL_LEATHER_FUR
 
 /material/leather/chitin
 	name = MATERIAL_LEATHER_CHITIN
-	integrity = 100
-	hardness = MATERIAL_HARD
-	weight = 18
-	brute_armor = 2
