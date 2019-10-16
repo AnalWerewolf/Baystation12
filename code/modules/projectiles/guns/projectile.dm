@@ -52,7 +52,6 @@
 		playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
 		src.visible_message("<span class='danger'>\The [src] jams!</span>")
 		is_jammed = 1
-		var/mob/user = loc
 	if(is_jammed)
 		return null
 	//get the next casing
