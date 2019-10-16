@@ -207,14 +207,12 @@
 			return
 
 	if(world.time < next_fire_time)
-		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
 		return
 
 	last_safety_check = world.time
 	var/shoot_time = (burst - 1)* burst_delay
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-	user.SetMoveCooldown(shoot_time) //no moving while shooting either
+//	user.SetMoveCooldown(shoot_time) //no moving while shooting either //why not retard?
 	next_fire_time = world.time + shoot_time
 
 	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
@@ -246,7 +244,7 @@
 	//update timing
 	var/delay = max(burst_delay+1, fire_delay)
 	user.setClickCooldown(min(delay, DEFAULT_QUICK_COOLDOWN))
-	user.SetMoveCooldown(move_delay)
+//	user.SetMoveCooldown(move_delay)
 	next_fire_time = world.time + delay
 
 //obtains the next projectile to fire

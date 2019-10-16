@@ -197,14 +197,13 @@
 	accuracy_power = 7
 	one_hand_penalty = 8
 	bulk = GUN_BULK_RIFLE
-	burst_delay = 4
+	burst_delay = 3
 	wielded_item_state = "z8carbine-wielded"
 	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	firemodes = list(
 		list(mode_name="semi auto",       burst=1,    fire_delay=null,    move_delay=null, one_hand_penalty=8, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3,    fire_delay=null, move_delay=null, one_hand_penalty=9, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.3, 0.8)),
-		list(mode_name="short bursts",   burst=5, fire_delay=null, move_delay=null,    one_hand_penalty=11, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.0, 0.5, 0.8, 1.2)),
+		list(mode_name="2-round bursts", burst=2,    fire_delay=null, move_delay=null, one_hand_penalty=9, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.3, 0.8))
 		)
 
 /*
