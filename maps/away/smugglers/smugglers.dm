@@ -100,10 +100,10 @@
 
 /obj/random/ammo_magazine_smug/spawn_choices()
 	return list(
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/speedloader,
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/mil_rifle)
+		/obj/item/ammo_magazine/m45,
+		/obj/item/ammo_magazine/speedloader/s38,
+		/obj/item/ammo_magazine/m762,
+		/obj/item/ammo_magazine/m762)
 
 /obj/structure/closet/crate/plastic_smug_ammo
 	name = "dirty plastic crate"

@@ -12,7 +12,7 @@
 	melee_damage_flags = DAM_SHARP|DAM_EDGE
 	attacktext = "clawed"
 	projectilesound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	projectiletype = /obj/item/projectile/bullet/pistol/holdout/hivebot
+	projectiletype = /obj/item/projectile/bullet/c9mm
 	faction = "hivebot"
 	min_gas = null
 	max_gas = null
@@ -113,12 +113,11 @@ Teleporter beacon, and its subtypes
 /*
 Special projectiles
 */
-/obj/item/projectile/bullet/pistol/holdout/hivebot
+/obj/item/projectile/bullet/c9mm
 	damage = 20
 
 /obj/item/projectile/bullet/gyro/megabot
 	name = "microrocket"
-	gyro_light_impact = 1
 	distance_falloff = 1.3
 
 /obj/item/projectile/beam/megabot
@@ -166,7 +165,7 @@ The megabot
 	. = ..()
 	if(!.)
 		return
-	
+
 	if(time_last_used_ability < world.time)
 		switch_mode(ATTACK_MODE_ROCKET)
 
@@ -192,7 +191,7 @@ The megabot
 			if(ATTACK_MODE_ROCKET)
 				icon_state = "megabot_rocket"
 				icon_living = "megabot_rocket"
-		
+
 /mob/living/simple_animal/hostile/hivebot/mega/proc/switch_mode(var/new_mode)
 	if(!new_mode || new_mode == attack_mode)
 		return

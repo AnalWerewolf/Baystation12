@@ -17,72 +17,72 @@
 	name = "ammunition (shotgun, beanbag)"
 	path = /obj/item/ammo_casing/shotgun/beanbag
 
-/datum/fabricator_recipe/arms_ammo/hidden/shotgun_flash
-	name = "ammunition (shotgun, flash)"
-	path = /obj/item/ammo_casing/shotgun/flash
-
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_smg_rubber
+/datum/fabricator_recipe/arms_ammo/hidden/m9mmtop_rubber
 	name = "ammunition (SMG rubber) top mounted"
-	path = /obj/item/ammo_magazine/smg_top/rubber
+	path = /obj/item/ammo_magazine/m9mmtop/rubber
 
 /datum/fabricator_recipe/arms_ammo/hidden/flamethrower
 	path = /obj/item/weapon/flamethrower/full
 
-/datum/fabricator_recipe/arms_ammo/hidden/speedloader
-	name = "ammunition (speedloader)"
-	path = /obj/item/ammo_magazine/speedloader
+/datum/fabricator_recipe/arms_ammo/hidden/speedloader_38
+	name = "ammunition (speedloader, .38)"
+	path = /obj/item/ammo_magazine/speedloader/s38
 
-/datum/fabricator_recipe/arms_ammo/hidden/speedloader_small
-	name = "ammunition (speedloader, holdout)"
-	path = /obj/item/ammo_magazine/speedloader/small
+/datum/fabricator_recipe/arms_ammo/hidden/speedloader_357
+	name = "ammunition (speedloader, .357)"
+	path = /obj/item/ammo_magazine/speedloader/s357
 
-/datum/fabricator_recipe/arms_ammo/hidden/speedloader_magnum
-	name = "ammunition (speedloader, magnum)"
+/datum/fabricator_recipe/arms_ammo/hidden/speedloader_44
+	name = "ammunition (speedloader, .44)"
 	path = /obj/item/ammo_magazine/speedloader/magnum
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_pistol
-	name = "ammunition (pistol)"
-	path = /obj/item/ammo_magazine/pistol
+/datum/fabricator_recipe/arms_ammo/hidden/m45
+	name = "ammunition (pistol, .45)"
+	path = /obj/item/ammo_magazine/m45
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_pistol_rubber
-	name = "ammunition (pistol, rubber)"
-	path = /obj/item/ammo_magazine/pistol/rubber
+/datum/fabricator_recipe/arms_ammo/hidden/m45_double
+	name = "ammunition (pistol, .45 high capacity)"
+	path = /obj/item/ammo_magazine/m45/double
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_pistol_double
-	name = "ammunition (pistol, doublestack)"
-	path = /obj/item/ammo_magazine/pistol/double
+/datum/fabricator_recipe/arms_ammo/hidden/m45_rubber
+	name = "ammunition (pistol, .45 rubber)"
+	path = /obj/item/ammo_magazine/m45/rubber
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_pistol_double_rubber
-	name = "ammunition (pistol, doublestack. rubber)"
-	path = /obj/item/ammo_magazine/pistol/double/rubber
+/datum/fabricator_recipe/arms_ammo/hidden/m45_double_rubber
+	name = "ammunition (pistol, .45 high capacity, rubber)"
+	path = /obj/item/ammo_magazine/m45/double/rubber
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_small
-	name = "ammunition (holdout)"
-	path = /obj/item/ammo_magazine/pistol/small
+/datum/fabricator_recipe/arms_ammo/hidden/m22
+	name = "ammunition (pistol, .22lr)"
+	path = /obj/item/ammo_magazine/m22
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_magnum
-	name = "ammunition (magnum)"
-	path = /obj/item/ammo_magazine/magnum
+/datum/fabricator_recipe/arms_ammo/hidden/m50AE
+	name = "ammunition (pistol, .50AE)"
+	path = /obj/item/ammo_magazine/m50AE
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_smg
-	name = "ammunition (submachine gun)"
-	path = /obj/item/ammo_magazine/smg
+/datum/fabricator_recipe/arms_ammo/hidden/m9mmsmg
+	name = "ammunition (submachine gun, 9mm)"
+	path = /obj/item/ammo_magazine/m9mmsmg
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_uzi
-	name = "ammunition (machine pistol)"
-	path = /obj/item/ammo_magazine/machine_pistol
+/datum/fabricator_recipe/arms_ammo/hidden/m9mmtop
+	name = "ammunition (submachine gun, 9mm top mounted)"
+	path = /obj/item/ammo_magazine/m9mmtop
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_smg_topmounted
-	name = "ammunition (SMG, top mounted)"
-	path = /obj/item/ammo_magazine/smg_top
+/datum/fabricator_recipe/arms_ammo/hidden/m762
+	name = "ammunition (rifle, 7.62x51mm)"
+	path = /obj/item/ammo_magazine/m762
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_arifle
-	name = "ammunition (rifle magazine)"
-	path = /obj/item/ammo_magazine/rifle
+/datum/fabricator_recipe/arms_ammo/hidden/m762/empty
+	name = "ammunition (rifle, 7.62x51mm, empty)"
+	path = /obj/item/ammo_magazine/m762/empty
 
-/datum/fabricator_recipe/arms_ammo/hidden/magazine_carbine
-	name = "ammunition (military rifle)"
-	path = /obj/item/ammo_magazine/mil_rifle
+/datum/fabricator_recipe/arms_ammo/hidden/m850
+	name = "ammunition (rifle, 8x50mm caseless)"
+	path = /obj/item/ammo_magazine/m850
+
+/datum/fabricator_recipe/arms_ammo/hidden/m850/empty
+	name = "ammunition (rifle, 8x50mm caseless, empty)"
+	path = /obj/item/ammo_magazine/m850/empty
 
 /datum/fabricator_recipe/arms_ammo/hidden/shotgun
 	name = "ammunition (slug, shotgun)"
@@ -94,15 +94,3 @@
 
 /datum/fabricator_recipe/arms_ammo/hidden/tacknife
 	path = /obj/item/weapon/material/knife/combat
-
-/datum/fabricator_recipe/arms_ammo/hidden/stunshell
-	name = "ammunition (stun cartridge, shotgun)"
-	path = /obj/item/ammo_casing/shotgun/stunshell
-
-/datum/fabricator_recipe/arms_ammo/hidden/skrellian_rifle_flechette
-	name = "ammunition (skrellian rifle, flechette)"
-	path = /obj/item/weapon/magnetic_ammo/skrell
-
-/datum/fabricator_recipe/arms_ammo/hidden/skrellian_rifle_slug
-	name = "ammunition (skrellian rifle, slug)"
-	path = /obj/item/weapon/magnetic_ammo/skrell/slug

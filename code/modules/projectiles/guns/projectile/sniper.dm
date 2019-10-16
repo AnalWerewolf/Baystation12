@@ -8,12 +8,12 @@
 	force = 10
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ESOTERIC = 8)
-	caliber = CALIBER_ANTIMATERIAL
+	caliber = CALIBER_50BMG
 	screen_shake = 2 //extra kickback
 	handle_casings = HOLD_CASINGS
 	load_method = SINGLE_CASING
 	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/shell
+	ammo_type = /obj/item/ammo_casing/a145
 	one_hand_penalty = 6
 	accuracy = -2
 	bulk = 8

@@ -4,12 +4,12 @@
 	icon = 'icons/obj/guns/revolvers.dmi'
 	icon_state = "revolver"
 	item_state = "revolver"
-	caliber = CALIBER_PISTOL_MAGNUM
+	caliber = CALIBER_44
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	fire_delay = 12 //Revolvers are naturally slower-firing
-	ammo_type = /obj/item/ammo_casing/pistol/magnum
+	ammo_type = /obj/item/ammo_casing/a44
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
@@ -45,6 +45,18 @@
 	chamber_offset = 0
 	return ..()
 
+/obj/item/weapon/gun/projectile/revolver/rm99_autorevolver
+	name = "RM99 auto-revolver"
+	icon_state = "rm99"
+	caliber = CALIBER_850
+	ammo_type = /obj/item/ammo_casing/a850
+	desc = "The Reynard and Mason RM99, considered overkill by many, this caseless auto-revolver is a heavy, dependable backup weapon for the modern soldier with augmented wrists."
+	handle_casings = CLEAR_CASINGS
+	one_hand_penalty = 0
+	bulk = 2
+	fire_delay = 4
+
+/*
 /obj/item/weapon/gun/projectile/revolver/medium
 	name = "revolver"
 	icon_state = "medium"
@@ -68,6 +80,7 @@
 	one_hand_penalty = 0
 	bulk = 0
 	fire_delay = 7
+*/
 
 /obj/item/weapon/gun/projectile/revolver/capgun
 	name = "cap gun"

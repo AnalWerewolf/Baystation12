@@ -3,7 +3,7 @@
 
 //backpack item
 /obj/item/weapon/defibrillator
-	name = "auto-resuscitator"
+	name = "defibrillator"
 	desc = "A device that delivers powerful shocks via detachable paddles to resuscitate incapacitated patients."
 	icon = 'icons/obj/defibrillator.dmi'
 	icon_state = "defibunit"
@@ -184,7 +184,7 @@
 
 /obj/item/weapon/defibrillator/compact/combat
 	name = "combat defibrillator"
-	desc = "A belt-equipped blood-red defibrillator that can be rapidly deployed. Does not have the restrictions or safeties of conventional defibrillators and can revive through space suits."
+	desc = "A belt-equipped advanced defibrillator that can be rapidly deployed. Does not have the restrictions or safeties of conventional defibrillators and can revive through space suits."
 	paddles = /obj/item/weapon/shockpaddles/linked/combat
 
 /obj/item/weapon/defibrillator/compact/combat/loaded
@@ -432,10 +432,10 @@
 	var/burn_damage = H.electrocute_act(burn_damage_amt*2, src, def_zone = target_zone)
 	if(burn_damage > 15 && H.can_feel_pain())
 		H.emote("scream")
-	var/obj/item/organ/internal/heart/doki = LAZYACCESS(affecting.internal_organs, BP_HEART)
-	if(istype(doki) && doki.pulse && !doki.open && prob(10))
-		to_chat(doki, "<span class='danger'>Your [doki] has stopped!</span>")
-		doki.pulse = PULSE_NONE
+	var/obj/item/organ/internal/heart/O = LAZYACCESS(affecting.internal_organs, BP_HEART)
+	if(istype(O) && O.pulse && !O.open && prob(10))
+		to_chat(O, "<span class='danger'>Your [O] has stopped!</span>")
+		O.pulse = PULSE_NONE
 
 	admin_attack_log(user, H, "Electrocuted using \a [src]", "Was electrocuted with \a [src]", "used \a [src] to electrocute")
 

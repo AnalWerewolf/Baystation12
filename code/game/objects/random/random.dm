@@ -272,7 +272,7 @@
 	desc = "This is a random projectile weapon."
 	icon = 'icons/obj/guns/revolvers.dmi'
 	icon_state = "revolver"
-
+/*
 /obj/random/projectile/spawn_choices()
 	return list(/obj/item/weapon/gun/projectile/shotgun/pump = 3,
 				/obj/item/weapon/gun/projectile/automatic/merc_smg = 2,
@@ -291,13 +291,13 @@
 				/obj/item/weapon/gun/projectile/heavysniper = 1,
 				/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2,
 				/obj/item/weapon/gun/projectile/pistol/throwback = 1)
-
+*/
 /obj/random/handgun
 	name = "Random Handgun"
 	desc = "This is a random sidearm."
 	icon = 'icons/obj/guns/pistol.dmi'
 	icon_state = "secguncomp"
-
+/*
 /obj/random/handgun/spawn_choices()
 	return list(/obj/item/weapon/gun/projectile/pistol/sec = 3,
 				/obj/item/weapon/gun/energy/gun = 2,
@@ -305,13 +305,13 @@
 				/obj/item/weapon/gun/projectile/pistol/holdout = 2,
 				/obj/item/weapon/gun/energy/retro = 1,
 				/obj/item/weapon/gun/projectile/pistol/throwback = 1)
-
+*/
 /obj/random/ammo
 	name = "Random Ammunition"
 	desc = "This is random ammunition."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "magnum"
-
+/*
 /obj/random/ammo/spawn_choices()
 	return list(/obj/item/weapon/storage/box/ammo/beanbags = 6,
 				/obj/item/weapon/storage/box/ammo/shotgunammo = 2,
@@ -321,7 +321,7 @@
 				/obj/item/ammo_magazine/smg_top = 2,
 				/obj/item/ammo_magazine/smg_top/rubber = 6,
 				/obj/item/ammo_magazine/pistol/throwback = 1)
-
+*/
 /obj/random/action_figure
 	name = "random action figure"
 	desc = "This is a random action figure."

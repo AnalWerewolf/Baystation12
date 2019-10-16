@@ -85,13 +85,6 @@
 		/obj/item/device/spy_monitor
 	)
 
-/obj/item/weapon/storage/box/syndie_kit/silenced
-	startswith = list(
-		/obj/item/weapon/gun/projectile/pistol/holdout,
-		/obj/item/weapon/silencer,
-		/obj/item/ammo_magazine/pistol/small
-	)
-
 /obj/item/weapon/storage/backpack/satchel/syndie_kit/revolver
 	startswith = list(
 		/obj/item/weapon/gun/projectile/revolver,

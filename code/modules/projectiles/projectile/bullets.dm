@@ -63,7 +63,7 @@
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 	damage = 22.5
 	//icon_state = "bullet" //TODO: would be nice to have it's own icon state
-	var/pellets = 4			//number of pellets
+	var/pellets = 6			//number of pellets
 	var/range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
 	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
 	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
@@ -85,7 +85,7 @@
 	//shrapnel explosions miss prone mobs with a chance that increases with distance
 	var/prone_chance = 0
 	if(!base_spread)
-		prone_chance = max(spread_step*(distance - 2), 0)
+		prone_chance = max(spread_step*(distance - 2), 10)
 
 	var/hits = 0
 	for (var/i in 1 to total_pellets)
@@ -117,145 +117,6 @@
 			if(M.lying || !M.CanPass(src, loc, 0.5, 0)) //Bump if lying or if we would normally Bump.
 				if(Bump(M)) //Bump will make sure we don't hit a mob multiple times
 					return
-
-/* short-casing projectiles, like the kind used in pistols or SMGs */
-
-/obj/item/projectile/bullet/pistol
-	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 30
-	distance_falloff = 3
-
-/obj/item/projectile/bullet/pistol/holdout
-	damage = 25
-	penetration_modifier = 1.2
-	distance_falloff = 4
-
-/obj/item/projectile/bullet/pistol/strong
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
-	damage = 50
-	armor_penetration = 20
-	penetration_modifier = 0.8
-	distance_falloff = 2.5
-
-/obj/item/projectile/bullet/pistol/rubber //"rubber" bullets
-	name = "rubber bullet"
-	damage_flags = 0
-	damage = 5
-	agony = 30
-	embed = 0
-
-//4mm. Tiny, very low damage, does not embed, but has very high penetration. Only to be used for the experimental SMG.
-/obj/item/projectile/bullet/flechette
-	fire_sound = 'sound/weapons/gunshot/gunshot_4mm.ogg'
-	damage = 8
-	penetrating = 1
-	armor_penetration = 70
-	embed = 0
-	distance_falloff = 2
-
-/* shotgun projectiles */
-
-/obj/item/projectile/bullet/shotgun
-	name = "slug"
-	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
-	damage = 55
-	armor_penetration = 20
-
-/obj/item/projectile/bullet/shotgun/beanbag		//because beanbags are not bullets
-	name = "beanbag"
-	damage = 25
-	damage_flags = 0
-	agony = 60
-	embed = 0
-	armor_penetration = 0
-	distance_falloff = 3
-
-//Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
-//Overall less damage than slugs in exchange for more damage at very close range and more embedding
-/obj/item/projectile/bullet/pellet/shotgun
-	name = "shrapnel"
-	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
-	damage = 15
-	pellets = 6
-	range_step = 1
-	spread_step = 10
-
-/* "Rifle" rounds */
-
-/obj/item/projectile/bullet/rifle
-	fire_sound = 'sound/weapons/gunshot/gunshot3.ogg'
-	damage = 30
-	armor_penetration = 25
-	penetration_modifier = 1.5
-	penetrating = 1
-	distance_falloff = 1.5
-
-/obj/item/projectile/bullet/rifle/military
-	fire_sound = 'sound/weapons/gunshot/gunshot2.ogg'
-	damage = 25
-	armor_penetration = 40
-	penetration_modifier = 1
-
-/obj/item/projectile/bullet/rifle/shell
-	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	damage = 80
-	stun = 3
-	weaken = 3
-	penetrating = 5
-	armor_penetration = 80
-	hitscan = 1 //so the PTR isn't useless as a sniper weapon
-	penetration_modifier = 1.25
-	distance_falloff = 0.5
-
-/obj/item/projectile/bullet/rifle/shell/apds
-	damage = 75
-	penetrating = 6
-	armor_penetration = 95
-	penetration_modifier = 1.5
-
-/* Miscellaneous */
-/obj/item/projectile/bullet/gyro
-	name = "minirocket"
-	fire_sound = 'sound/effects/Explosion1.ogg'
-	var/gyro_devastation = -1
-	var/gyro_heavy_impact = 0
-	var/gyro_light_impact = 2
-
-/obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
-	if(isturf(target))
-		explosion(target, gyro_devastation, gyro_heavy_impact, gyro_light_impact)
-	..()
-
-/obj/item/projectile/bullet/blank
-	invisibility = 101
-	damage = 1
-	embed = 0
-
-/* Practice */
-
-/obj/item/projectile/bullet/pistol/practice
-	damage = 5
-
-/obj/item/projectile/bullet/rifle/military/practice
-	damage = 5
-
-/obj/item/projectile/bullet/shotgun/practice
-	name = "practice"
-	damage = 5
-
-/obj/item/projectile/bullet/pistol/cap
-	name = "cap"
-	invisibility = 101
-	fire_sound = null
-	damage_type = PAIN
-	damage_flags = 0
-	damage = 0
-	nodamage = 1
-	embed = 0
-
-/obj/item/projectile/bullet/pistol/cap/Process()
-	qdel(src)
-	return PROCESS_KILL
 
 /obj/item/projectile/bullet/rock //spess dust
 	name = "micrometeor"

@@ -152,58 +152,24 @@
 	build_path = /obj/item/weapon/gun/projectile/automatic
 	sort_string = "TAPAB"
 
-/datum/design/item/weapon/bullpup
-	id = "bullpup"
+/datum/design/item/weapon/rm108lr
+	id = "rm108lr"
 	req_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_SILVER = 5000, MATERIAL_DIAMOND = 3000)
-	build_path = /obj/item/weapon/gun/projectile/automatic/bullpup_rifle
+	build_path = /obj/item/weapon/gun/projectile/automatic/rm108lr
 	sort_string = "TAPAC"
 
 /datum/design/item/weapon/ammunition/AssembleDesignName()
 	..()
 	name = "Ammunition prototype ([item_name])"
 
-/datum/design/item/weapon/ammunition/ammo_small
+/datum/design/item/weapon/ammunition/b22
 	id = "ammo_small"
-	desc = "A box of small pistol rounds."
+	desc = "A box of .22lr rounds."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials = list(MATERIAL_STEEL = 3750, MATERIAL_SILVER = 100)
-	build_path = /obj/item/ammo_magazine/box/smallpistol
+	build_path = /obj/item/ammo_magazine/box/b22
 	sort_string = "TBAAA"
-
-/datum/design/item/weapon/ammunition/ammo_flechette
-	id = "ammo_flechette"
-	desc = "A high capacity magazine of armor piercing flechette."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials = list(MATERIAL_STEEL = 2000, MATERIAL_SILVER = 500, MATERIAL_DIAMOND = 200)
-	build_path = /obj/item/ammo_magazine/proto_smg
-	sort_string = "TBAAB"
-
-/datum/design/item/weapon/ammunition/stunshell
-	desc = "A stunning shell for a shotgun."
-	id = "stunshell"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-	materials = list(MATERIAL_STEEL = 4000)
-	build_path = /obj/item/ammo_casing/shotgun/stunshell
-	sort_string = "TBAAC"
-
-/datum/design/item/weapon/ammunition/ammo_emp_small
-	name = "haywire 7mm"
-	id = "ammo_emp_small"
-	desc = "A box of small pistol rounds with integrated EMP charges."
-	materials = list(MATERIAL_STEEL = 2500, MATERIAL_URANIUM = 750)
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-	build_path = /obj/item/ammo_magazine/box/emp/smallpistol
-	sort_string = "TBAAD"
-
-/datum/design/item/weapon/ammunition/ammo_emp_pistol
-	name = "haywire 10mm"
-	id = "ammo_emp_pistol"
-	desc = "A box of pistol rounds fitted with integrated EMP charges."
-	materials = list(MATERIAL_STEEL = 2500, MATERIAL_URANIUM = 750)
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-	build_path = /obj/item/ammo_magazine/box/emp/pistol
-	sort_string = "TBAAF"
 
 /datum/design/item/weapon/ammunition/ammo_emp_slug
 	id = "ammo_emp_slug"

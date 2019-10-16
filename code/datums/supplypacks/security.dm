@@ -200,7 +200,7 @@
 
 /decl/hierarchy/supply_pack/security/pdwammo
 	name = "Ammunition - SMG top mounted"
-	contains = list(/obj/item/ammo_magazine/smg_top = 4)
+	contains = list(/obj/item/ammo_magazine/m9mmtop = 4)
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "SMG ammunition crate"
@@ -209,7 +209,7 @@
 
 /decl/hierarchy/supply_pack/security/pdwammorubber
 	name = "Ammunition - SMG top mounted rubber"
-	contains = list(/obj/item/ammo_magazine/smg_top/rubber = 4)
+	contains = list(/obj/item/ammo_magazine/m9mmtop/rubber = 4)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "SMG rubber ammunition crate"
@@ -217,24 +217,32 @@
 
 /decl/hierarchy/supply_pack/security/pdwammopractice
 	name = "Ammunition - SMG top mounted practice"
-	contains = list(/obj/item/ammo_magazine/smg_top/practice = 8)
+	contains = list(/obj/item/ammo_magazine/m9mmtop/practice = 8)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "SMG practice ammunition crate"
 	access = access_security
 
-/decl/hierarchy/supply_pack/security/bullpupammo
-	name = "Ammunition - military rifle"
-	contains = list(/obj/item/ammo_magazine/mil_rifle = 4)
+/decl/hierarchy/supply_pack/security/ammo762
+	name = "Ammunition - 7.62x51mm"
+	contains = list(/obj/item/ammo_magazine/m762 = 4)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "military rifle ammunition crate"
 	access = access_security
 	security_level = SUPPLY_SECURITY_HIGH
 
-/decl/hierarchy/supply_pack/security/bullpupammopractice
-	name = "Ammunition - military rifle practice"
-	contains = list(/obj/item/ammo_magazine/mil_rifle/practice = 8)
+/decl/hierarchy/supply_pack/security/ammo762rubber
+	name = "Ammunition - 7.62x51mm rubber"
+	contains = list(/obj/item/ammo_magazine/m762/rubber = 8)
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "military rifle practice ammunition crate"
+	access = access_security
+
+/decl/hierarchy/supply_pack/security/ammo762practice
+	name = "Ammunition - 7.62x51mm practice"
+	contains = list(/obj/item/ammo_magazine/m762/practice = 8)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "military rifle practice ammunition crate"

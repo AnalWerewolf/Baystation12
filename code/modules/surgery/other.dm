@@ -98,7 +98,7 @@
 	name = "Remove hardsuit"
 	allowed_tools = list(
 		/obj/item/weapon/weldingtool = 80,
-		/obj/item/weapon/circular_saw = 60,
+		/obj/item/weapon/circular_saw = 75,
 		/obj/item/psychic_power/psiblade/master/grand/paramount = 100,
 		/obj/item/psychic_power/psiblade = 75,
 		/obj/item/weapon/gun/energy/plasmacutter = 30

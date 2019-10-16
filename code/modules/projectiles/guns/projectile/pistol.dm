@@ -1,7 +1,7 @@
 
 /obj/item/weapon/gun/projectile/pistol
 	load_method = MAGAZINE
-	caliber = CALIBER_PISTOL
+	caliber = CALIBER_9MM
 	magazine_type = /obj/item/ammo_magazine/pistol
 	allowed_magazines = /obj/item/ammo_magazine/pistol
 	accuracy_power = 7
@@ -23,7 +23,9 @@
 			return
 		else
 			overlays += image(icon, "ammo_ok")
-	
+
+
+/*
 /obj/item/weapon/gun/projectile/pistol/military
 	name = "military pistol"
 	desc = "The Hephaestus Industries P20 - a mass produced kinetic sidearm in widespread service with the SCGDF."
@@ -179,10 +181,10 @@
 		icon_state = "pistol"
 	if(!(ammo_magazine && ammo_magazine.stored_ammo.len))
 		icon_state = "[icon_state]-e"
-
+*/
 /obj/item/weapon/silencer
-	name = "silencer"
-	desc = "A silencer."
+	name = "suppressor"
+	desc = "A suppressor, often falsely reffered to as a silencer."
 	icon = 'icons/obj/guns/holdout_pistol.dmi'
-	icon_state = "silencer"
+	icon_state = "suppressor"
 	w_class = ITEM_SIZE_SMALL

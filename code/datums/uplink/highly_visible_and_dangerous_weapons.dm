@@ -24,13 +24,6 @@
 	item_cost = 32
 	path = /obj/item/weapon/melee/energy/sword
 
-/datum/uplink_item/item/visible_weapons/silenced
-	name = "Small Silenced Pistol"
-	desc = "A kit with a pocket-sized holdout pistol, silencer, and an extra magazine. \
-			Attaching the silencer will make it too big to conceal in your pocket."
-	item_cost = 32
-	path = /obj/item/weapon/storage/box/syndie_kit/silenced
-
 /datum/uplink_item/item/badassery/money_cannon
 	name = "Modified Money Cannon"
 	item_cost = 48
@@ -110,7 +103,7 @@
 	desc = "A shortened double-barrel shotgun, able to fire either one, or both, barrels at once."
 	item_cost = 45
 	path = /obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
-
+/*
 /datum/uplink_item/item/visible_weapons/deagle
 	name = "Magnum Pistol"
 	desc = "A high-caliber pistol that uses 15mm ammunition."
@@ -128,7 +121,7 @@
 	desc = "A pocket-sized holdout revolver. Easily concealable.."
 	item_cost = 24
 	path = /obj/item/weapon/gun/projectile/revolver/holdout
-
+*/
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
 	desc = "A triple burst, heavy laser rifle, with a large battery compacity."

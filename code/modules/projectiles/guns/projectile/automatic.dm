@@ -7,12 +7,12 @@
 	w_class = ITEM_SIZE_NORMAL
 	bulk = -1
 	load_method = MAGAZINE
-	caliber = CALIBER_PISTOL_FLECHETTE
+	caliber = CALIBER_45
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BELT
-	ammo_type = /obj/item/ammo_casing/flechette
-	magazine_type = /obj/item/ammo_magazine/proto_smg
-	allowed_magazines = /obj/item/ammo_magazine/proto_smg
+	ammo_type = /obj/item/ammo_casing/a45
+	magazine_type = /obj/item/ammo_magazine/m45mp
+	allowed_magazines = /obj/item/ammo_magazine/m45mp
 	multi_aim = 1
 	burst_delay = 2
 	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
@@ -39,11 +39,11 @@
 	icon_state = "mpistolen"
 	safety_icon = "safety"
 	item_state = "mpistolen"
-	caliber = CALIBER_PISTOL
+	caliber = CALIBER_9MM
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ESOTERIC = 3)
-	ammo_type = /obj/item/ammo_casing/pistol
-	magazine_type = /obj/item/ammo_magazine/machine_pistol
-	allowed_magazines = /obj/item/ammo_magazine/machine_pistol //more damage compared to the wt550, smaller mag size
+	ammo_type = /obj/item/ammo_casing/a9mm
+	magazine_type = /obj/item/ammo_magazine/m9mmsmg
+	allowed_magazines = /obj/item/ammo_magazine/m9mmsmg
 	one_hand_penalty = 2
 
 	firemodes = list(
@@ -76,7 +76,7 @@
 	safety_icon = "safety"
 	w_class = ITEM_SIZE_LARGE
 	force = 10
-	caliber = CALIBER_PISTOL
+	caliber = CALIBER_9MM
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ESOTERIC = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	magazine_type = /obj/item/ammo_magazine/smg
@@ -105,17 +105,17 @@
 /obj/item/weapon/gun/projectile/automatic/assault_rifle
 	name = "assault rifle"
 	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Originally produced by Hephaestus. The serial number has been scratched off."
-	icon = 'icons/obj/guns/assault_rifle.dmi'
-	icon_state = "arifle"
+	icon = 'icons/obj/guns/assaultgun.dmi'
+	icon_state = "assaultgun"
 	item_state = null
 	w_class = ITEM_SIZE_HUGE
 	force = 10
-	caliber = CALIBER_RIFLE
+	caliber = CALIBER_762
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ESOTERIC = 5)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/rifle
-	allowed_magazines = /obj/item/ammo_magazine/rifle
+	magazine_type = /obj/item/ammo_magazine/m762
+	allowed_magazines = /obj/item/ammo_magazine/m762
 	one_hand_penalty = 8
 	accuracy_power = 7
 	accuracy = 2
@@ -148,13 +148,13 @@
 	item_state = "wt550"
 	safety_icon = "safety"
 	w_class = ITEM_SIZE_NORMAL
-	caliber = CALIBER_PISTOL_SMALL
+	caliber = CALIBER_9MM
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	ammo_type = /obj/item/ammo_casing/pistol/small
+	ammo_type = /obj/item/ammo_casing/a9mm
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/smg_top/rubber
-	allowed_magazines = /obj/item/ammo_magazine/smg_top
+	magazine_type = /obj/item/ammo_magazine/m9mmtop/rubber
+	allowed_magazines = /obj/item/ammo_magazine/m9mmtop
 	accuracy_power = 7
 	one_hand_penalty = 3
 
@@ -174,21 +174,23 @@
 	else
 		overlays += image(icon, "ammo-bad")
 
-/obj/item/weapon/gun/projectile/automatic/bullpup_rifle
-	name = "bullpup assault rifle"
-	desc = "The Hephaestus Industries Z8 Bulldog is an older model bullpup carbine. Makes you feel like a space marine when you hold it."
+/obj/item/weapon/gun/projectile/automatic/rm108lr
+	name = "RM108lr"
+	desc = "The Reynard and Mason RM108lr is a flashy, expensive bullpup rifle series built to perform under less than ideal conditions. This model features an inbuilt ported barrel and an overall extended frame. Uses caseless ammunition."
 	icon = 'icons/obj/guns/bullpup_rifle.dmi'
-	icon_state = "carbine"
-	item_state = "z8carbine"
+	icon_state = "rm108lr"
+	item_state = "rm108lr"
 	w_class = ITEM_SIZE_HUGE
-	force = 10
-	caliber = CALIBER_RIFLE_MILITARY
+	force = 15
+	caliber = CALIBER_850
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
-	ammo_type = /obj/item/ammo_casing/rifle/military
+	ammo_type = /obj/item/ammo_casing/a850
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mil_rifle
-	allowed_magazines = /obj/item/ammo_magazine/mil_rifle
+	magazine_type = null
+	allowed_magazines = /obj/item/ammo_magazine/m850
+	handle_casings = CLEAR_CASINGS
+	jam_chance = 4
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	accuracy = 2
@@ -200,11 +202,12 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/batrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	firemodes = list(
-		list(mode_name="semi auto",       burst=1,    fire_delay=null,    move_delay=null, use_launcher=null, one_hand_penalty=8, burst_accuracy=null, dispersion=null),
-		list(mode_name="3-round bursts", burst=3,    fire_delay=null, move_delay=6,    use_launcher=null, one_hand_penalty=9, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.6, 1.0)),
-		list(mode_name="fire grenades",  burst=null, fire_delay=null, move_delay=null, use_launcher=1,    one_hand_penalty=10, burst_accuracy=null, dispersion=null)
+		list(mode_name="semi auto",       burst=1,    fire_delay=null,    move_delay=null, one_hand_penalty=8, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3,    fire_delay=null, move_delay=null, one_hand_penalty=9, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.3, 0.8)),
+		list(mode_name="short bursts",   burst=5, fire_delay=null, move_delay=null,    one_hand_penalty=11, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.0, 0.5, 0.8, 1.2)),
 		)
 
+/*
 	var/use_launcher = 0
 	var/obj/item/weapon/gun/launcher/grenade/underslung/launcher
 
@@ -231,17 +234,17 @@
 			switch_firemodes() //switch back automatically
 	else
 		..()
-
-/obj/item/weapon/gun/projectile/automatic/bullpup_rifle/on_update_icon()
+*/
+/obj/item/weapon/gun/projectile/automatic/rm108lr/on_update_icon()
 	..()
 	if(ammo_magazine)
 		if(ammo_magazine.stored_ammo.len)
-			icon_state = "carbine-loaded"
+			icon_state = "rm108lr-loaded"
 		else
-			icon_state = "carbine-empty"
+			icon_state = "rm108lr-empty"
 	else
-		icon_state = "carbine"
-
+		icon_state = "rm108lr"
+/*
 /obj/item/weapon/gun/projectile/automatic/bullpup_rifle/examine(mob/user)
 	. = ..()
 	if(launcher.chambered)
@@ -331,3 +334,4 @@
 		to_chat(user, "<span class='warning'>You need to open the cover to unload [src].</span>")
 		return
 	..()
+*/
