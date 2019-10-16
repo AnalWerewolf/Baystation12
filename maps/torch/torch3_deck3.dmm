@@ -4063,7 +4063,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/structure/reagent_dispensers/water_cooler{
+	dir = 8
+	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -12540,8 +12542,7 @@
 "Bw" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/uniform_vendor{
-	icon_state = "robotics";
-	dir = 8
+	dir = 8;
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/crew_quarters/sleep/cryo)
@@ -12716,7 +12717,7 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/water_cooler{
-	pixel_x = 6
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/crew_quarters/sleep/cryo)
@@ -17853,8 +17854,7 @@
 	dir = 4
 	},
 /obj/machinery/vending/coffee{
-	icon_state = "coffee";
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/thirddeck/aft)
@@ -21260,6 +21260,11 @@
 /obj/structure/railing/mapped,
 /turf/simulated/floor/plating,
 /area/maintenance/thirddeck/starboard)
+"ZW" = (
+/obj/structure/table/woodentable_reinforced/mahogany,
+/obj/item/weapon/spirit_board,
+/turf/simulated/floor/wood/maple,
+/area/chapel/main)
 "ZY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -45417,7 +45422,7 @@ uq
 Mj
 XY
 AW
-BP
+ZW
 BF
 RG
 CU
