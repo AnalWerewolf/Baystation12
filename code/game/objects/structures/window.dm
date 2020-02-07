@@ -160,16 +160,16 @@
 		return 0
 	return 1
 
-/obj/structure/window/hitby(atom/movable/AM)
+/obj/structure/window/hitby(atom/movable/AM, var/datum/thrownthing/TT)
 	..()
 	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 	var/tforce = 0
 	if(ismob(AM)) // All mobs have a multiplier and a size according to mob_defines.dm
 		var/mob/I = AM
-		tforce = I.mob_size * 2 * I.throw_multiplier
+		tforce = I.mob_size * (TT.speed/THROWFORCE_SPEED_DIVISOR)
 	else if(isobj(AM))
 		var/obj/item/I = AM
-		tforce = I.throwforce
+		tforce = I.throwforce * (TT.speed/THROWFORCE_SPEED_DIVISOR)
 	if(reinf_material) tforce *= 0.25
 	if(health - tforce <= 7 && !reinf_material)
 		set_anchored(FALSE)
@@ -569,7 +569,7 @@
 			to_chat(user, "<span class='notice'>There is already a window there.</span>")
 			return
 	to_chat(user, "<span class='notice'>You start placing the window.</span>")
-	if(do_after(user,20,src))
+	if(do_after(user,20))
 		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
 				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")

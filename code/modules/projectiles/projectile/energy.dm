@@ -1,6 +1,7 @@
 /obj/item/projectile/energy
 	name = "energy"
 	icon_state = "spark"
+	temperature = T0C + 300
 	damage = 0
 	damage_type = BURN
 	damage_flags = 0
@@ -162,7 +163,7 @@
 		to_chat(M, SPAN_DANGER("Your ears start to ring badly!"))
 		if(prob(M.ear_damage - 5))
 			to_chat(M, SPAN_DANGER("You can't hear anything!"))
-			M.set_sdisability(DEAF)
+			M.set_sdisability(DEAFENED)
 	else
 		if(M.ear_damage >= 5)
 			to_chat(M, SPAN_DANGER("Your ears start to ring!"))

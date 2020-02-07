@@ -21,7 +21,7 @@ var/list/solars_list = list()
 	var/ndir = SOUTH // target dir
 	var/turn_angle = 0
 	var/obj/machinery/power/solar_control/control = null
-	
+
 /obj/machinery/power/solar/improved
 	name = "improved solar panel"
 	efficiency = 2
@@ -174,12 +174,20 @@ var/list/solars_list = list()
 //trace towards sun to see if we're in shadow
 /obj/machinery/power/solar/proc/occlusion()
 
+	var/steps = 20	// 20 steps is enough
 	var/ax = x		// start at the solar panel
 	var/ay = y
 	var/turf/T = null
 
-	for(var/i = 1 to 20)		// 20 steps is enough
-		ax += GLOB.sun.dx	// do step
+	// On planets, we take fewer steps because the light is mostly up
+	// Also, many planets barely have any spots with enough clear space around
+	if(GLOB.using_map.use_overmap)
+		var/obj/effect/overmap/visitable/sector/exoplanet/E = map_sectors["[z]"]
+		if(istype(E))
+			steps = 5
+
+	for(var/i = 1 to steps)
+		ax += GLOB.sun.dx
 		ay += GLOB.sun.dy
 
 		T = locate( round(ax,0.5),round(ay,0.5),z)
@@ -191,7 +199,7 @@ var/list/solars_list = list()
 			obscured = 1
 			return
 
-	obscured = 0		// if hit the edge or stepped 20 times, not obscured
+	obscured = 0		// if hit the edge or stepped max times, not obscured
 	update_solar_exposure()
 
 
@@ -323,14 +331,14 @@ var/list/solars_list = list()
 			if(istype(M, /obj/machinery/power/solar))
 				var/obj/machinery/power/solar/S = M
 				if(!S.control) //i.e unconnected
-					S.set_control(src)
-					connected_panels |= S
+					if(S.set_control(src))
+						connected_panels |= S
 			else if(istype(M, /obj/machinery/power/tracker))
 				if(!connected_tracker) //if there's already a tracker connected to the computer don't add another
 					var/obj/machinery/power/tracker/T = M
 					if(!T.control) //i.e unconnected
-						connected_tracker = T
-						T.set_control(src)
+						if(T.set_control(src))
+							connected_tracker = T
 
 //called by the sun controller, update the facing angle (either manually or via tracking) and rotates the panels accordingly
 /obj/machinery/power/solar_control/proc/update()
@@ -347,7 +355,6 @@ var/list/solars_list = list()
 
 	set_panels(cdir)
 	updateDialog()
-
 
 /obj/machinery/power/solar_control/Initialize()
 	. = ..()

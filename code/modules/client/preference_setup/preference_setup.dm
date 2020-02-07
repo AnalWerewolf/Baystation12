@@ -113,7 +113,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 
 	if(href_list["category"])
 		var/category = locate(href_list["category"])
-		if(category && category in categories)
+		if(category && (category in categories))
 			selected_category = category
 		. = 1
 
@@ -238,6 +238,9 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 		return 1
 	var/mob/pref_mob = preference_mob()
 	if(!pref_mob || !pref_mob.client)
+		return 1
+	// If the usr isn't trying to alter their own mob then they must instead be an admin
+	if(usr != pref_mob && !check_rights(R_ADMIN, 0, usr))
 		return 1
 
 	. = OnTopic(href, href_list, usr)

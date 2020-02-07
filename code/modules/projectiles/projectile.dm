@@ -60,6 +60,7 @@
 	var/fire_sound
 	var/miss_sounds
 	var/ricochet_sounds
+	var/list/impact_sounds	//for different categories, IMPACT_MEAT etc
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel
 
 	var/vacuum_traversal = 1 //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
@@ -423,7 +424,7 @@
 	xo = null
 	var/result = 0 //To pass the message back to the gun.
 
-/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer)
 		forceMove(A.loc)
 		return //cannot shoot yourself

@@ -1,7 +1,9 @@
 /obj/item/projectile/beam
 	name = "laser"
 	icon_state = "laser"
+	temperature = T0C + 300
 	fire_sound='sound/weapons/Laser.ogg'
+	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_GLASS | PASS_FLAG_GRILLE
 	damage = 40
 	damage_type = BURN
@@ -295,3 +297,37 @@
 	muzzle_type = /obj/effect/projectile/stun/darkmatter/muzzle
 	tracer_type = /obj/effect/projectile/stun/darkmatter/tracer
 	impact_type = /obj/effect/projectile/stun/darkmatter/impact
+
+/obj/item/projectile/beam/pointdefense
+	name = "point defense salvo"
+	icon_state = "laser"
+	damage = 15
+	damage_type = ELECTROCUTE //You should be safe inside a voidsuit
+	sharp = FALSE //"Wide" spectrum beam
+	muzzle_type = /obj/effect/projectile/pointdefense/muzzle
+	tracer_type = /obj/effect/projectile/pointdefense/tracer
+	impact_type = /obj/effect/projectile/pointdefense/impact
+
+/obj/item/projectile/beam/incendiary_laser
+	name = "scattered laser blast"
+	icon_state = "beam_incen"
+	fire_sound='sound/weapons/scan.ogg'
+	damage = 12
+	agony = 8
+	eyeblur = 8
+	sharp = FALSE
+	damage_flags = 0
+	life_span = 8
+	penetration_modifier = 0.1
+
+	muzzle_type = /obj/effect/projectile/incen/muzzle
+	tracer_type = /obj/effect/projectile/incen/tracer
+	impact_type = /obj/effect/projectile/incen/impact
+
+/obj/item/projectile/beam/incendiary_laser/on_hit(var/atom/target, var/blocked = 0)
+	..()
+	if(isliving(target))
+		var/mob/living/L = target
+		L.adjust_fire_stacks(rand(2,4))
+		if(L.fire_stacks >= 3)
+			L.IgniteMob()

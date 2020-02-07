@@ -45,13 +45,13 @@ var/global/photo_count = 0
 /obj/item/weapon/photo/on_update_icon()
 	overlays.Cut()
 	var/scale = 8/(photo_size*32)
-	var/image/small_img = image(img.icon)
+	var/image/small_img = image(img)
 	small_img.transform *= scale
 	small_img.pixel_x = -32*(photo_size-1)/2 - 3
 	small_img.pixel_y = -32*(photo_size-1)/2
 	overlays |= small_img
 
-	tiny = image(img.icon)
+	tiny = image(img)
 	tiny.transform *= 0.5*scale
 	tiny.underlays += image('icons/obj/bureaucracy.dmi',"photo")
 	tiny.pixel_x = -32*(photo_size-1)/2 - 3
@@ -68,7 +68,7 @@ var/global/photo_count = 0
 	. = TRUE
 	if(!img)
 		return
-	if(in_range(user, src))
+	if(distance <= 1)
 		show(user)
 		to_chat(user, desc)
 	else
@@ -160,7 +160,7 @@ var/global/photo_count = 0
 	else
 		icon_state = "[bis.base_icon_state]_off"
 /obj/item/device/camera/Initialize()
-	set_extension(src, /datum/extension/base_icon_state, /datum/extension/base_icon_state, icon_state)
+	set_extension(src, /datum/extension/base_icon_state, icon_state)
 	update_icon()
 	. = ..()
 

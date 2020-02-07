@@ -1,11 +1,12 @@
 // For registering for events to be called when certain conditions are met.
 
 /datum/extension/event_registration
+	base_type = /datum/extension/event_registration
 	expected_type = /datum
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/decl/observ/event
 	var/datum/target
-	var/proc/callproc
+	var/callproc
 
 /datum/extension/event_registration/New(datum/holder, decl/observ/event, datum/target, callproc)
 	..()
@@ -26,6 +27,7 @@
 // Only forwards the event if the given area isn't in a moving shuttle.
 
 /datum/extension/event_registration/shuttle_stationary
+	base_type = /datum/extension/event_registration/shuttle_stationary
 	var/list/shuttles_registered
 	var/shuttle_moving = FALSE
 	var/given_area
